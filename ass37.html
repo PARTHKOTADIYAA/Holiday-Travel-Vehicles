@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Travel Vehicles System Prototype</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 600px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        a {
+            text-decoration: none;
+            width: 80%;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Main Menu -->
+    <div id="main-menu" class="menu">
+        <h1>Holiday Travel Vehicles</h1>
+        <a href="#sales-invoice-menu">
+            <button>Sales Invoice</button>
+        </a>
+        <a href="#vehicle-inventory-menu">
+            <button>Vehicle Inventory</button>
+        </a>
+        <a href="#reports-menu">
+            <button>Reports</button>
+        </a>
+        <a href="#sales-staff-menu">
+            <button>Sales Staff</button>
+        </a>
+    </div>
+
+    <!-- Sales Invoice Menu -->
+    <div id="sales-invoice-menu" class="menu hidden">
+        <h1>Sales Invoice Menu</h1>
+        <button onclick="alert('Create Sales Invoice selected')">Create Sales Invoice</button>
+        <button onclick="alert('Change Sales Invoice selected')">Change Sales Invoice</button>
+        <button onclick="alert('Cancel Sales Invoice selected')">Cancel Sales Invoice</button>
+        <a href="#main-menu">
+            <button>Back to Main Menu</button>
+        </a>
+    </div>
+
+    <!-- Vehicle Inventory Menu -->
+    <div id="vehicle-inventory-menu" class="menu hidden">
+        <h1>Vehicle Inventory Menu</h1>
+        <button onclick="alert('Create Vehicle Inventory Record selected')">Create Vehicle Inventory Record</button>
+        <button onclick="alert('Change Vehicle Inventory Record selected')">Change Vehicle Inventory Record</button>
+        <button onclick="alert('Delete Vehicle Inventory Record selected')">Delete Vehicle Inventory Record</button>
+        <a href="#main-menu">
+            <button>Back to Main Menu</button>
+        </a>
+    </div>
+
+    <!-- Reports Menu -->
+    <div id="reports-menu" class="menu hidden">
+        <h1>Reports Menu</h1>
+        <button onclick="alert('Commission Report selected')">Commission Report</button>
+        <button onclick="alert('RV Sales by Make Report selected')">RV Sales by Make Report</button>
+        <button onclick="alert('Trailer Sales by Make Report selected')">Trailer Sales by Make Report</button>
+        <button onclick="alert('Dealer Options Report selected')">Dealer Options Report</button>
+        <a href="#main-menu">
+            <button>Back to Main Menu</button>
+        </a>
+    </div>
+
+    <!-- Sales Staff Maintenance Menu -->
+    <div id="sales-staff-menu" class="menu hidden">
+        <h1>Sales Staff Maintenance Menu</h1>
+        <button onclick="alert('Add Salesperson Record selected')">Add Salesperson Record</button>
+        <button onclick="alert('Change Salesperson Record selected')">Change Salesperson Record</button>
+        <button onclick="alert('Delete Salesperson Record selected')">Delete Salesperson Record</button>
+        <a href="#main-menu">
+            <button>Back to Main Menu</button>
+        </a>
+    </div>
+</div>
+
+<script>
+    // Function to hide all menus except the target menu
+    function showMenu(menuId) {
+        const menus = document.querySelectorAll('.menu');
+        menus.forEach(menu => menu.classList.add('hidden'));
+        document.getElementById(menuId).classList.remove('hidden');
+    }
+
+    // Function to go back to the main menu
+    document.querySelectorAll('a[href="#main-menu"]').forEach(link => {
+        link.addEventListener('click', () => {
+            const menus = document.querySelectorAll('.menu');
+            menus.forEach(menu => menu.classList.add('hidden'));
+            document.getElementById('main-menu').classList.remove('hidden');
+        });
+    });
+
+    // Links for each menu
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', event => {
+            const target = event.target.closest('a').getAttribute('href').substring(1);
+            showMenu(target);
+        });
+    });
+</script>
+</body>
+</html>
